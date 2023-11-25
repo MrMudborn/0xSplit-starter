@@ -14,13 +14,11 @@ import {
 } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { Navbar } from "./components/Navbr";
-import { GetSplitData, WriteSplit } from "./components";
-import { SplitProvider } from "./provider";
+import { Splits, Navbar } from "./components";
 
 const { chains, publicClient, walletClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora, goerli],
-  [publicProvider()]
+  [goerli],
+  [alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_ID }), publicProvider()]
 );
 const { connectors } = getDefaultWallets({
   appName: "My RainbowKit App",
@@ -39,10 +37,7 @@ const App = () => {
       <RainbowKitProvider chains={chains}>
         <Navbar />
         <section className="section">
-          <SplitProvider>
-            <GetSplitData />
-            <WriteSplit />
-          </SplitProvider>
+          <Splits />
         </section>
       </RainbowKitProvider>
     </WagmiConfig>

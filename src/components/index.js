@@ -1,5 +1,4 @@
-import { Navbar } from "./Navbr";
-import GetSplitData from "./GetSplitData";
-import WriteSplit from "./WriteSplit";
+import Navbar from "./Navbar";
+import Splits from "./Splits";
 
-export { Navbar, GetSplitData, WriteSplit };
+export { Navbar, Splits };
